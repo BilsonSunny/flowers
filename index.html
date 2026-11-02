@@ -484,21 +484,36 @@ function sample(n, c1, c2){
     '<text x="200" y="320" font-size="28" fill="#fff" fill-opacity=".85" text-anchor="middle" font-family="sans-serif"> photo ' + n + '</text></svg>';
   return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
 }
+
+// add more line if she want more photos
+
 const PHOTOS = [
   { src: sample(1,'#c8102e','#5a0f24'), caption: 'photo one' },
   { src: sample(2,'#e85a71','#7b1a35'), caption: 'photo two' },
   { src: sample(3,'#ff9fb2','#b5122f'), caption: 'photo three' },
   { src: sample(4,'#a3122a','#2a0610'), caption: 'photo four' },
   { src: sample(5,'#f06a85','#6b1a2a'), caption: 'photo five' },
-];
+  { src: sample(6,'#ff9fb2','#b5122f'), caption: 'photo six' },
+  { src: sample(7,'#a3122a','#2a0610'), caption: 'photo seven' },
+  { src: sample(8,'#f06a85','#6b1a2a'), caption: 'photo eight' },
 
-/* after event photo upload 
+
+]; 
+
+/*
+//after event photo upload 
    const PHOTOS = [
-     { src: 'photos/pic1.jpg', caption: 'the cake' },
+     { src: '/photos/pic1.jpg', caption: '' },
      { src: 'photos/pic2.jpg', caption: '' },
      { src: 'photos/pic3.jpg', caption: '' },
      { src: 'photos/pic4.jpg', caption: '' },
      { src: 'photos/pic5.jpg', caption: '' },
+     { src: 'photos/pic6.jpg', caption: '' },
+     { src: 'photos/pic7.jpg', caption: '' },
+     { src: 'photos/pic8.jpg', caption: '' },
+     { src: 'photos/pic9.jpg', caption: '' },
+
+
    ];
 */
 
