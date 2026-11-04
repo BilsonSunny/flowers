@@ -397,17 +397,17 @@ function logUnlock(){
     'Language: ' + navigator.language
   ].join('\n');
 
-  fetch('https://formsubmit.co/ajax/' + _t, {
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body: JSON.stringify({
-      _subject: 'Aakriti unlocked the gift',
-      _template: 'box',
-      _captcha: 'false',
-      message: info
-    }),
-    keepalive: true
-  }).catch(()=>{});
+  fetch('https://api.web3forms.com/submit', {
+  method:'POST',
+  headers:{'Content-Type':'application/json','Accept':'application/json'},
+  body: JSON.stringify({
+    access_key: 'b179ca32-0a74-4956-842c-a9c6a2fcf2a1',
+    subject: 'Aakriti unlocked the gift',
+    from_name: 'Gift page',
+    message: info
+  }),
+  keepalive: true
+}).catch(()=>{});
 }
 
 
@@ -496,7 +496,7 @@ function sample(n, c1, c2){
 }
 
 // add more line if she want more photos
-
+//comment this out afer edit
 const PHOTOS = [
   { src: sample(1,'#c8102e','#5a0f24'), caption: 'photo one' },
   { src: sample(2,'#e85a71','#7b1a35'), caption: 'photo two' },
@@ -631,23 +631,23 @@ form.addEventListener('submit', async (e)=>{
   statusEl.className = 'status';
   statusEl.textContent = 'sending…';
   try{
-    const res = await fetch('https://formsubmit.co/ajax/' + _t, {
-      method:'POST',
-      headers:{'Content-Type':'application/json','Accept':'application/json'},
-      body: JSON.stringify({
-        _subject: 'Message from Aakriti',
-        _template: 'box',
-        _captcha: 'false',
-        message: 'Message from Aakriti\n' + text
-      })
-    });
-    const data = await res.json().catch(()=>({}));
-    if(res.ok && (data.success === true || data.success === 'true')){
-      statusEl.textContent = 'Sent! Thank you 🌹';
-      form.reset();
-    }else{
-      throw new Error('send failed');
-    }
+    const res = await fetch('https://api.web3forms.com/submit', {
+  method:'POST',
+  headers:{'Content-Type':'application/json','Accept':'application/json'},
+  body: JSON.stringify({
+    access_key: 'b179ca32-0a74-4956-842c-a9c6a2fcf2a1',
+    subject: 'Message from Aakriti',
+    from_name: 'Aakriti',
+    message: 'Message from Aakriti\n' + text
+  })
+});
+const data = await res.json();
+if(data.success){
+  statusEl.textContent = 'Sent! Thank you 🌹';
+  form.reset();
+}else{
+  throw new Error('send failed');
+}
   }catch(err){
     statusEl.className = 'status err';
     statusEl.textContent = 'Hmm, that did not go through. Please try again in a moment.';
